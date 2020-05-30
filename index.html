@@ -64,11 +64,30 @@
     </style>
     <script>
       let audio = new Audio();
+      let annoySahilCount = 0;
+
       function pronounce(url) {
+        const base = 'resources/sounds';
         audio.pause();
         audio.src = url;
         audio.play();
-      }
+      };
+
+      function annoySahil() {
+        annoySahilCount++;
+
+        if(annoySahilCount % 5 === 0 || annoySahilCount % 7 === 0) {
+        const  baseUrl = 'resources/sounds/';
+        const ext = '.mp3';
+        const phrases = ['ow', 'ouch', 'oy', 'whatdoyouwant', 'whatisyourproblem', 'stop', 'juststop', 'cutit', 'stoptouchingme', 'whywouldyoudothat', 'goaway', 'youvestartedtoannoyme', 'stoptouchingmeitsinappropriate'];
+
+        let randomPhrase = baseUrl + phrases[Math.floor(Math.random() * phrases.length)] + ext;
+
+        pronounce(randomPhrase);
+        } else {
+          return;
+        }
+      };
     </script>
     <title>
       A.I. vs Natural Stupidity
@@ -80,7 +99,7 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-4">
-          <p class="text-center text-header" onclick="pronounce('resources/sahil_narain.mp3')">
+          <p class="text-center text-header" onclick="pronounce('resources/sounds/sahil_narain.mp3')">
             SAHIL NARAIN
           </p>
         </div>
@@ -132,7 +151,7 @@
           </p>
         </div>
         <div class="col-md-4 div-image">
-          <img src="resources/sahil_narain.jpg" class="img-fluid mx-auto image">
+          <img src="resources/images/sahil_narain.jpg" class="img-fluid mx-auto image" onclick="annoySahil()">
         </div>
       </div>
     </div>
