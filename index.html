@@ -62,6 +62,14 @@
       padding-top: 25px;
       }
     </style>
+    <script>
+      let audio = new Audio();
+      function pronounce(url) {
+        audio.pause();
+        audio.src = url;
+        audio.play();
+      }
+    </script>
     <title>
       A.I. vs Natural Stupidity
     </title>
@@ -72,7 +80,7 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-4">
-          <p class="text-center text-header">
+          <p class="text-center text-header" onclick="pronounce('resources/sahil_narain.mp3')">
             SAHIL NARAIN
           </p>
         </div>
@@ -124,7 +132,7 @@
           </p>
         </div>
         <div class="col-md-4 div-image">
-          <img src="https://i.imgur.com/mTTOSR2.png" class="img-fluid mx-auto image">
+          <img src="resources/sahil_narain.jpg" class="img-fluid mx-auto image">
         </div>
       </div>
     </div>
