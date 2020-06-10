@@ -66,23 +66,35 @@
       let audio = new Audio();
       let annoySahilCount = 0;
 
+      const phrases = ['ow', 'ouch', 'oy', 'whatdoyouwant', 'whatisyourproblem', 'stop', 'juststop', 'cutit', 'stoptouchingme', 'whywouldyoudothat', 'goaway', 'youvestartedtoannoyme', 'stoptouchingmeitsinappropriate'];
+      let usedPhrases = [];
+
       function pronounce(url) {
-        const base = 'resources/sounds';
         audio.pause();
         audio.src = url;
         audio.play();
       };
 
       function annoySahil() {
+        if(usedPhrases.length === phrases.length) {
+          usedPhrases = [];
+        }
+
         annoySahilCount++;
 
         if(annoySahilCount % 5 === 0 || annoySahilCount % 7 === 0) {
         const  baseUrl = 'resources/sounds/';
         const ext = '.mp3';
-        const phrases = ['ow', 'ouch', 'oy', 'whatdoyouwant', 'whatisyourproblem', 'stop', 'juststop', 'cutit', 'stoptouchingme', 'whywouldyoudothat', 'goaway', 'youvestartedtoannoyme', 'stoptouchingmeitsinappropriate'];
 
-        let randomPhrase = baseUrl + phrases[Math.floor(Math.random() * phrases.length)] + ext;
+        // let randomPhrase = baseUrl + phrases[Math.floor(Math.random() * phrases.length)] + ext;
+        let candidatePhrase = phrases[Math.floor(Math.random() * phrases.length)];
 
+        while(usedPhrases.indexOf(candidatePhrase) >= 0) {
+          candidatePhrase = phrases[Math.floor(Math.random() * phrases.length)];
+        }
+
+        usedPhrases.push(candidatePhrase);
+        let randomPhrase = baseUrl + candidatePhrase + ext;
         pronounce(randomPhrase);
         } else {
           return;
@@ -142,7 +154,7 @@
             My day job is to be the guy who sits in a corner and thinks deep technical thoughts.
           </p>
           <p class="text-left text-main">
-            You can contact me at <a class="text-links-inner-body" href="mailto:sahil.narain+contact@pm.me">sahil.narain+contact@pm.me</a>.
+            You can contact me over <a class="text-links-inner-body" href="mailto:sahil.narain+contact@pm.me">email</a> or <a class=text-links-inner-body href="https://t.me/SahilNarain">telegram</a>.
           </p>
           <p class="text-left text-main">
           </p>
